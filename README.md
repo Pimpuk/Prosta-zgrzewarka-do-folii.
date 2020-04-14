@@ -1,1 +1,2 @@
 # Prosta-zgrzewarka-do-folii.
+Zgrzewarka zamykana manualnie (nogą). Potencjometry ustalają czas zgrzewania oraz chłodzenia. Myślę, że maksimum 4 sekundy jest OK. Po zamknięciu szczęk, zostają one unieruchomione elektromagnesem. Włączony jest transformator grzałki na ustalony czas. Po wyłączeniu grzałki odliczany jest czas chłodzenia i wyłączany elektromagnes. Jeśli ktoś myśli, że delaye się nie nadają do poważnego programowania, to niech zauważy, że ten program zasadniczo ma jedynie siedzieć w delayach i nic więcej nie robić.
