@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-#define potZgrzew	  A6
-#define potChlodz	  A7
+#define potZgrzew     A6
+#define potChlodz     A7
 #define przekMagnesu  A0
 #define przekGrzalki  A1
 #define przyciskNozny A3
