@@ -1,29 +1,24 @@
+/*Begining of Auto generated code by Atmel studio */
 #include <Arduino.h>
 
-#define potZgrzew     A6
-#define potChlodz     A7
-#define przekMagnesu  A0
-#define przekGrzalki  A1
+#define potZgrzew     A7
+#define potChlodz     A6
+#define przekMagnesu  A1
+#define przekGrzalki  A0
 #define przyciskNozny A3
 
 int czasZgrzewania()
 {
 	int val = analogRead(potZgrzew);
-	val = map(val, 0, 1024, 0, 4000);
+	val = map(val, 0, 1024, 1000, 4000);
 	return val;
 }
 
 int czasChlodzenia()
 {
 	int val = analogRead(potChlodz);
-	val = map(val, 0, 1024, 0, 4000);
+	val = map(val, 0, 1024, 1000, 4000);
 	return val;
-}
-
-bool wcisniete()
-{
-	if (digitalRead(przyciskNozny)) return 1;
-	else return 0;
 }
 
 void setup()
@@ -33,18 +28,28 @@ void setup()
 	pinMode(przyciskNozny, INPUT_PULLUP);
 	pinMode(przekGrzalki, OUTPUT);
 	pinMode(przekMagnesu, OUTPUT);
+	digitalWrite(przekGrzalki, HIGH);
+	digitalWrite(przekMagnesu, HIGH);
 }
 
 void loop()
 {
-	if (wcisniete()) delay(50);
-	if (wcisniete())
-	{
-		digitalWrite(przekGrzalki, HIGH);
-		digitalWrite(przekMagnesu, HIGH);
-		delay(czasZgrzewania());
-		digitalWrite(przekGrzalki, LOW);
-		delay(czasChlodzenia);
-		digitalWrite(przekMagnesu, LOW);
+	int T1 = czasZgrzewania();
+	int T2 = czasChlodzenia();
+	digitalWrite(przekGrzalki, HIGH);
+	digitalWrite(przekMagnesu, HIGH);
+	
+	
+	if (digitalRead(przyciskNozny)==LOW){
+		delay(50);
+		if (digitalRead(przyciskNozny==LOW)){
+			digitalWrite(przekGrzalki, LOW);
+			digitalWrite(przekMagnesu, LOW);
+			delay(T1);
+			digitalWrite(przekGrzalki, HIGH);
+			delay(T2);
+			digitalWrite(przekMagnesu, HIGH);
+			delay(1000);// czas na otwarczie sie szczek
+		}		
 	}
 }
